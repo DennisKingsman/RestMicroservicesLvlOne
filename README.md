@@ -21,7 +21,7 @@
 first statrs discovery-server wich includes euruka server  
 then starts other micro-services
 ## Eureka-ui
-[http://localhost:8761/](eureka)
+[localhost:8761](http://localhost:8761/)
 ## Mvn
 to build jars user `mvn install`  
 to demonstrate loadBalanced restTemplate start same app with different instance on different ports using  
