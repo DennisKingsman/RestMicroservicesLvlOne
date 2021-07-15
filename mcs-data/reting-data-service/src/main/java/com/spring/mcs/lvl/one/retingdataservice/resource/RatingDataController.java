@@ -20,7 +20,6 @@ public class RatingDataController {
     }
 
     /**
-     *
      * @param userId use to get data from DB
      * @return list of ratings
      */
