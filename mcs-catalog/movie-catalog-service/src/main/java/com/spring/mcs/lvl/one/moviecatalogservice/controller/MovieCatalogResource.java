@@ -5,6 +5,7 @@ import com.spring.mcs.lvl.one.moviecatalogservice.model.Movie;
 import com.spring.mcs.lvl.one.moviecatalogservice.model.Rating;
 import com.spring.mcs.lvl.one.moviecatalogservice.model.UserRating;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,15 @@ public class MovieCatalogResource {
 
     private RestTemplate restTemplate;
     private WebClient.Builder webClientBuilder;
+    private DiscoveryClient discoveryClient;
 
+    //use for advanced load balancing
+    @Autowired
+    public void setDiscoveryClient(DiscoveryClient discoveryClient) {
+        this.discoveryClient = discoveryClient;
+    }
+
+    //use for reactive-web calls
     @Autowired
     public void setWebClientBuilder(WebClient.Builder webClientBuilder) {
         this.webClientBuilder = webClientBuilder;
@@ -35,13 +44,13 @@ public class MovieCatalogResource {
     @GetMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
         UserRating userRating = restTemplate.getForObject(
-                "http://localhost:8083/rating/users/" + userId,
+                "http://RATING-DATA-SERVICE/rating/users/" + userId,
                 UserRating.class);
 
         List<Rating> ratings = userRating.getRatings();
         return ratings.stream().map(rating -> {
             Movie movie = restTemplate.getForObject(
-                    "http://localhost:8082/movies/" + rating.getMovieId(),
+                    "http://movie-info-service/movies/" + rating.getMovieId(),
                     Movie.class);
             return new CatalogItem(movie.getName(), "desc", rating.getMovieRating());
         }).collect(Collectors.toList());
@@ -55,5 +64,5 @@ public class MovieCatalogResource {
                     .uri("http://localhost:8082/movies/" + rating.getMovieId())
                     .retrieve()
                     .bodyToMono(Movie.class)
-                    .block();
+                    .block(); // toWait sync
 */
