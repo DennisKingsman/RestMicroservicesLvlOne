@@ -55,5 +55,5 @@ public class MovieCatalogResource {
                     .uri("http://localhost:8082/movies/" + rating.getMovieId())
                     .retrieve()
                     .bodyToMono(Movie.class)
-                    .block();
+                    .block(); // toWait
 */
