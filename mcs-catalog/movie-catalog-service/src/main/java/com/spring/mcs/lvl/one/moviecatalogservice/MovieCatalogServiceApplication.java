@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 @EnableEurekaClient
+@EnableCircuitBreaker
 public class MovieCatalogServiceApplication {
 
     //LoadBalance does service-discovery in the loadBalanced way
