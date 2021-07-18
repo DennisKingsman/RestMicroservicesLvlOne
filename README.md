@@ -44,3 +44,5 @@ Connect movie-info-service to api.themoviedb.org as db
 ## Mcs lvl two
 Provide fault tolerance and resilience   
 Set timeout to restTemplate  
+Circuit bracker pattern  
+Use Hystrix  
