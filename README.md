@@ -33,3 +33,14 @@ java -Dserver.port=8202 -jar <app-jar-name>.jar
 RestTemplate  
 WebClient (by commented)  
 Spring Cloud (to use euruka server)  
+# Lvls
+## Mcs lvl one
+Creating three services which is  
+movie-catalog-service  
+movie-info-service  
+rating-data-service  
+Creating euruka server and enable euruka-clients to connect services between each other  
+Connect movie-info-service to api.themoviedb.org as db  
+## Mcs lvl two
+Provide fault tolerance and resilience   
+Set timeout to restTemplate  
