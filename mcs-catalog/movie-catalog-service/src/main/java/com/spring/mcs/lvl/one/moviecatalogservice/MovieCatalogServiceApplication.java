@@ -2,6 +2,7 @@ package com.spring.mcs.lvl.one.moviecatalogservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +19,7 @@ public class MovieCatalogServiceApplication {
     @Bean
     @LoadBalanced
     public RestTemplate getRestTemplate() {
-        HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        var clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
         clientHttpRequestFactory.setConnectTimeout(2000);
         clientHttpRequestFactory.setReadTimeout(2500);
         return new RestTemplate(clientHttpRequestFactory);
