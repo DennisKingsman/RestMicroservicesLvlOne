@@ -23,6 +23,11 @@ public class RatingDataResource {
     }
 
     @HystrixCommand(fallbackMethod = "getFallbackUserRating",
+            threadPoolKey = "ratingDataPool",
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "20"),
+                    @HystrixProperty(name = "maxQueueSize", value = "10")
+            },
             commandProperties = {
                     @HystrixProperty(name = HYSTRIX_TIMEOUT, value = "2500"),
                     @HystrixProperty(name = HYSTRIX_THRESHOLD, value = "5"),

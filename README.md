@@ -48,7 +48,7 @@ Set timeout to restTemplate
 Circuit bracker pattern  
 Use Hystrix(because of the proxy two HystrixCommand cannot be in one Spring bean)  
 Add Hystrix dashboard  
-Bulkhead pattern  
+Bulkhead pattern with thredPool  
 #Issues 
 ## Mcs-lvl-one
 -
@@ -57,3 +57,4 @@ With adding hystrix dashboar apps getting fallback every time
 Unable to connect to Command Metric Stream. Reason - proxy, no matter how to config app.properties  
 Hystrix dashboard commit deleted  
 Movie-info-service sometimes falls with timeout while calling ext movie DB  
+Hystrix thread pool options not testet, just added to show it  

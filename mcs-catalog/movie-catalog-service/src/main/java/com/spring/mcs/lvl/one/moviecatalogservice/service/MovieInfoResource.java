@@ -22,6 +22,11 @@ public class MovieInfoResource {
     }
 
     @HystrixCommand(fallbackMethod = "getFallbackCatalogItem",
+            threadPoolKey = "MovieInfoPool",
+            threadPoolProperties = {
+                    @HystrixProperty(name = "coreSize", value = "20"),
+                    @HystrixProperty(name = "maxQueueSize", value = "10")
+            },
             commandProperties = {
                     @HystrixProperty(name = HYSTRIX_TIMEOUT, value = "5000"),
                     @HystrixProperty(name = HYSTRIX_THRESHOLD, value = "5"),
