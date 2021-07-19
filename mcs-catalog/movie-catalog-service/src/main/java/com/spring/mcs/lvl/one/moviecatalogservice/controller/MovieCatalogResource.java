@@ -22,6 +22,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/catalog")
 public class MovieCatalogResource {
 
+    public static final String HYSTRIX_TIMEOUT = "execution.isolation.thread.timeoutInMilliseconds";
+    public static final String HYSTRIX_THRESHOLD = "circuitBreaker.requestVolumeThreshold";
+    public static final String HYSTRIX_ERROR_PERCENT = "circuitBreaker.errorThresholdPercentage";
+    public static final String HYSTRIX_SLEEP = "circuitBreaker.sleepWindowInMilliseconds";
+
     private RatingDataResource ratingDataResource;
     private MovieInfoResource movieInfoResource;
     private WebClient.Builder webClientBuilder;
