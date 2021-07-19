@@ -1,8 +1,6 @@
 package com.spring.mcs.lvl.one.moviecatalogservice.controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.spring.mcs.lvl.one.moviecatalogservice.model.CatalogItem;
-import com.spring.mcs.lvl.one.moviecatalogservice.model.Movie;
 import com.spring.mcs.lvl.one.moviecatalogservice.model.Rating;
 import com.spring.mcs.lvl.one.moviecatalogservice.model.UserRating;
 import com.spring.mcs.lvl.one.moviecatalogservice.service.MovieInfoResource;

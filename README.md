@@ -45,4 +45,4 @@ Connect movie-info-service to api.themoviedb.org as db
 Provide fault tolerance and resilience   
 Set timeout to restTemplate  
 Circuit bracker pattern  
-Use Hystrix  
+Use Hystrix(because of the proxy two HystrixCommand cannot be in one Spring bean)  
