@@ -5,6 +5,8 @@ import com.spring.mcs.lvl.one.moviecatalogservice.model.CatalogItem;
 import com.spring.mcs.lvl.one.moviecatalogservice.model.Movie;
 import com.spring.mcs.lvl.one.moviecatalogservice.model.Rating;
 import com.spring.mcs.lvl.one.moviecatalogservice.model.UserRating;
+import com.spring.mcs.lvl.one.moviecatalogservice.service.MovieInfoResource;
+import com.spring.mcs.lvl.one.moviecatalogservice.service.RatingDataResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +24,21 @@ import java.util.stream.Collectors;
 @RequestMapping("/catalog")
 public class MovieCatalogResource {
 
+    private RatingDataResource ratingDataResource;
+    private MovieInfoResource movieInfoResource;
     private RestTemplate restTemplate;
     private WebClient.Builder webClientBuilder;
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    public void setRatingDataResource(RatingDataResource ratingDataResource) {
+        this.ratingDataResource = ratingDataResource;
+    }
+
+    @Autowired
+    public void setMovieInfoResource(MovieInfoResource movieInfoResource) {
+        this.movieInfoResource = movieInfoResource;
+    }
 
     //use for advanced load balancing
     @Autowired
@@ -44,21 +58,15 @@ public class MovieCatalogResource {
     }
 
     @GetMapping("/{userId}")
-    @HystrixCommand(fallbackMethod = "getFallbackCatalog")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
-        UserRating userRating = restTemplate.getForObject(
-                "http://RATING-DATA-SERVICE/rating/users/" + userId,
-                UserRating.class);
-
+        UserRating userRating = ratingDataResource.getUserRating(userId);
         List<Rating> ratings = userRating.getRatings();
-        return ratings.stream().map(rating -> {
-            Movie movie = restTemplate.getForObject(
-                    "http://movie-info-service/movies/" + rating.getMovieId(),
-                    Movie.class);
-            return new CatalogItem(movie.getName(), "desc", rating.getMovieRating());
-        }).collect(Collectors.toList());
+        return ratings.stream()
+                .map(rating -> movieInfoResource.getCatalogItem(rating))
+                .collect(Collectors.toList());
     }
 
+    @Deprecated
     public List<CatalogItem> getFallbackCatalog(@PathVariable("userId") String userId) {
         return Arrays.asList(new CatalogItem("No movie", "", 0));
     }
