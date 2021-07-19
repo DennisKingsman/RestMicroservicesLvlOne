@@ -21,8 +21,8 @@ public class MovieCatalogServiceApplication {
     @LoadBalanced
     public RestTemplate getRestTemplate() {
         var clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        clientHttpRequestFactory.setConnectTimeout(2000);
-        clientHttpRequestFactory.setReadTimeout(2500);
+        clientHttpRequestFactory.setConnectTimeout(3500);
+        clientHttpRequestFactory.setReadTimeout(3500);
         return new RestTemplate(clientHttpRequestFactory);
     }
 

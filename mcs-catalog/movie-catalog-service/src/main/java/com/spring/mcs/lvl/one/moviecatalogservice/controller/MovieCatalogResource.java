@@ -24,7 +24,6 @@ public class MovieCatalogResource {
 
     private RatingDataResource ratingDataResource;
     private MovieInfoResource movieInfoResource;
-    private RestTemplate restTemplate;
     private WebClient.Builder webClientBuilder;
     private DiscoveryClient discoveryClient;
 
@@ -48,11 +47,6 @@ public class MovieCatalogResource {
     @Autowired
     public void setWebClientBuilder(WebClient.Builder webClientBuilder) {
         this.webClientBuilder = webClientBuilder;
-    }
-
-    @Autowired
-    public void setRestTemplate(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
     }
 
     @GetMapping("/{userId}")

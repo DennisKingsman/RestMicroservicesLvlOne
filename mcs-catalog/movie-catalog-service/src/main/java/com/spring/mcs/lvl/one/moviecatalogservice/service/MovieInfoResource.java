@@ -27,7 +27,7 @@ public class MovieInfoResource {
     }
 
     private CatalogItem getFallbackCatalogItem(Rating rating) {
-        return new CatalogItem("Movie not found", "", 0);
+        return new CatalogItem("Movie not found", "", rating.getMovieRating());
     }
 
 }

@@ -21,8 +21,9 @@ public class RatingDataResource {
 
     @HystrixCommand(fallbackMethod = "getFallbackUserRating")
     public UserRating getUserRating(String userId) {
+        System.out.println("WE ARE IN getUserRating");
         return restTemplate.getForObject(
-                "http://RATING-DATA-SERVICE/rating/users/" + userId,
+                "http://rating-data-service/rating/users/" + userId,
                 UserRating.class);
     }
 

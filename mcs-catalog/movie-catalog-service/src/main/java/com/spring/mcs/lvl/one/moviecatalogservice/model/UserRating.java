@@ -31,4 +31,12 @@ public class UserRating {
         this.ratings = ratings;
     }
 
+    @Override
+    public String toString() {
+        return "UserRating{" +
+                "userId='" + userId + '\'' +
+                ", ratings=" + ratings +
+                '}';
+    }
+
 }
