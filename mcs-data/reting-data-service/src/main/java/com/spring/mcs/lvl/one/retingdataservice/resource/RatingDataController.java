@@ -25,11 +25,13 @@ public class RatingDataController {
      */
     @GetMapping("/users/{userId}")
     public UserRating getRatings(@PathVariable("userId") String userId) {
+        System.out.println("WE ARE IN getRatings");
         List<Rating> ratings = Arrays.asList(
                 new Rating("123", 4),
                 new Rating("232", 3)
         );
         UserRating userRating = new UserRating();
+        userRating.setUserId(userId);
         userRating.setRatings(ratings);
         return userRating;
     }

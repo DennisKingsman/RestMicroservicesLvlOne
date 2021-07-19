@@ -3,14 +3,14 @@ package com.spring.mcs.lvl.one.retingdataservice.model;
 public class Rating {
 
     private String movieId;
-    private int rating;
+    private int movieRating;
 
     public Rating() {
     }
 
     public Rating(String movieId, int rating) {
         this.movieId = movieId;
-        this.rating = rating;
+        this.movieRating = rating;
     }
 
     public String getMovieId() {
@@ -21,12 +21,12 @@ public class Rating {
         this.movieId = movieId;
     }
 
-    public int getRating() {
-        return rating;
+    public int getMovieRating() {
+        return movieRating;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setMovieRating(int movieRating) {
+        this.movieRating = movieRating;
     }
 
 }
