@@ -1,7 +1,8 @@
 # Author
 ## DennisKingsman
 # Resources
-[youtube-guide](https://www.youtube.com/playlist?list=PLqq-6Pq4lTTZSKAFG6aCDVDP86Qx4lNas)
+[youtube-guide-mcs-lvl-1](https://www.youtube.com/playlist?list=PLqq-6Pq4lTTZSKAFG6aCDVDP86Qx4lNas)  
+[youtube-guide-mcs-lvl-2](https://www.youtube.com/playlist?list=PLqq-6Pq4lTTbXZY_elyGv7IkKrfkSrX5e)  
 # Recomended to study
 ## RestTemplate
 [baeldung.com/rest-template](https://www.baeldung.com/rest-template)  
@@ -32,7 +33,7 @@ java -Dserver.port=8202 -jar <app-jar-name>.jar
 # Use
 RestTemplate  
 WebClient (by commented)  
-Spring Cloud (to use euruka server)  
+Spring Cloud (to use euruka server and hystrix)  
 # Lvls
 ## Mcs lvl one
 Creating three services which is  
@@ -46,3 +47,13 @@ Provide fault tolerance and resilience
 Set timeout to restTemplate  
 Circuit bracker pattern  
 Use Hystrix(because of the proxy two HystrixCommand cannot be in one Spring bean)  
+Add Hystrix dashboard  
+Bulkhead pattern  
+#Issues 
+## Mcs-lvl-one
+-
+## Mcs-lvl-two
+With adding hystrix dashboar apps getting fallback every time  
+Unable to connect to Command Metric Stream. Reason - proxy, no matter how to config app.properties  
+Hystrix dashboard commit deleted  
+Movie-info-service sometimes falls with timeout while calling ext movie DB  

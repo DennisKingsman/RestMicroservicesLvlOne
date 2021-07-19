@@ -23,9 +23,9 @@ public class MovieInfoResource {
 
     @HystrixCommand(fallbackMethod = "getFallbackCatalogItem",
             commandProperties = {
-                    @HystrixProperty(name = HYSTRIX_TIMEOUT, value = "2500"),
+                    @HystrixProperty(name = HYSTRIX_TIMEOUT, value = "5000"),
                     @HystrixProperty(name = HYSTRIX_THRESHOLD, value = "5"),
-                    @HystrixProperty(name = HYSTRIX_SLEEP, value = "5000"),
+                    @HystrixProperty(name = HYSTRIX_SLEEP, value = "10000"),
                     @HystrixProperty(name = HYSTRIX_ERROR_PERCENT, value = "60")
             }
     )
