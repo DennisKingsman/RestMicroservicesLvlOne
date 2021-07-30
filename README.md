@@ -49,7 +49,7 @@ Circuit bracker pattern
 Use Hystrix(because of the proxy two HystrixCommand cannot be in one Spring bean)  
 Add Hystrix dashboard  
 Bulkhead pattern with thredPool  
-#Issues 
+# Issues 
 ## Mcs-lvl-one
 -
 ## Mcs-lvl-two
