@@ -49,6 +49,9 @@ Circuit bracker pattern
 Use Hystrix(because of the proxy two HystrixCommand cannot be in one Spring bean)  
 Add Hystrix dashboard  
 Bulkhead pattern with thredPool  
+## Mcs lvl three
+### Related projects 
+[config-project-demo](https://github.com/DennisKingsman/RestMicroservicesLvlThree)
 # Issues 
 ## Mcs-lvl-one
 -
