@@ -51,6 +51,8 @@ Add Hystrix dashboard
 Bulkhead pattern with thredPool  
 ## Mcs lvl three
 ### Related projects 
+[application.yml for cfg-server](https://github.com/DennisKingsman/ConfigSpringCloudServer)  
+[spring-cloud-config-server-for-mcs-lvl-3-related-project](https://github.com/DennisKingsman/RestMicroservicesLvlOne/tree/master/spring-cloud-config-server-for-mcs-lvl-3-related-project/spring-cloud-config-server)  
 [config-project-demo](https://github.com/DennisKingsman/RestMicroservicesLvlThree)
 # Issues 
 ## Mcs-lvl-one
